@@ -1,10 +1,15 @@
 <?php
-require_once 'Answer.php';
 
 declare(strict_types=1);
+require_once 'Question.php';
+require_once 'Answer.php';
+include 'AnswerOption.php';
+
+
+
 
 class OptionsQuestion extends Question{
-    public AnswerOption $options= array();
+    public $options=array();
 
     public bool $isMultipleChoice; 
 
@@ -12,18 +17,31 @@ class OptionsQuestion extends Question{
     {
         parent::__construct($questionText);
         $parts = explode("||",$answerOptions); 
-        $index = 1; 
+        $index = 0; 
+        
         foreach($parts as $part){
-            $options[] = new AnswerOption($part,$index++);  
+            $this->options[] = new AnswerOption($part,$index++);  
         }
 
     }
 
+    // expects a combined string according to the answer positions true|false|true|true ... etc. 
     public function isAnswerCorrect(Answer $answer):bool{
-        foreach($answer->answeroptions as $option){
-
+        $allcorrect=true; 
+        $parts=explode("|",$answer->answertext);
+        $numOptions=count($this->options);
+        if(count($parts)!=$numOptions) throw new Exception("invalid number of answer elements");
+        for($x=0; $x<$numOptions; $x++){
+            if($parts[$x]!=$this->options[$x]) return false; 
         }
         return true; 
+    }
+
+    public function simpleDisplay(){
+        echo $this->questionText . "<br/>";
+        foreach($this->options as $option){
+            echo $option->text . "<br/>";
+        } 
     }
 
 }
