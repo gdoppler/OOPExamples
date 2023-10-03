@@ -7,7 +7,7 @@ class AnswerOption{
     public string $text;
     public bool $isSet; 
 
-    // expects a combined string in the format [optiontext]|true/false
+    // expects a combined string in the format [optiontext]|[true/false]
     public function __construct(string $optionAndIsSet, public int $position)
     {
         $parts=explode("|",$optionAndIsSet); 
