@@ -3,11 +3,12 @@
 require_once 'OptionsQuestion.php';
 require_once 'TextQuestion.php';
 
+// let's have a look on a multiple choice question
 $q1=new OptionsQuestion("Welche dieser Begriffe sind \"access modifiers\" in PHP?","public|true||protected|true||private|true||abstract|false", true); 
 
-echo "<pre>";
+//echo "<pre>";
 //var_dump($q1);
-echo "</pre>";
+//echo "</pre>";
 
 $q1->simpleDisplay(); 
 echo "<hr/>";
@@ -18,6 +19,8 @@ echo $tests[1] . " should be wrong and is -> [" . $q1->showIfAnswerIsCorrect(new
 echo "<hr";
 // let's test all 16 combinations of true/false for the 4 option question
 for($x=0;$x<16;$x++){
+    // ever seen bitwise logical operators? 
+    // this is a nice example
     $o1=$x & 1 ? "true": "false"; 
     $o2=$x & 2 ? "true": "false"; 
     $o4=$x & 4 ? "true": "false"; 
@@ -28,8 +31,9 @@ for($x=0;$x<16;$x++){
 
 }
 echo "<hr/>";
+
 // now for the textquestion
-$q2=new TextQuestion("Nenne einen der access modifiers in PHP: ", "public|protected|private");
+$q2=new TextQuestion("Nenne einen der \"access modifiers\" in PHP: ", "public|protected|private");
 $q2->simpleDisplay();
 echo "<hr/>";
 

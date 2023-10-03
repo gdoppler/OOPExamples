@@ -15,6 +15,7 @@ class TextQuestion extends Question{
         $this->correctAnswers = $parts;
     }
 
+    // we have to implement this method as our base class promises it. 
     public function IsAnswerCorrect(Answer $answer): bool{
         foreach($this->correctAnswers as $correctAnswer){
             if($correctAnswer == $answer->answertext) return true; 
