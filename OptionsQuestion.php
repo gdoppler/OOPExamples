@@ -6,8 +6,6 @@ require_once 'Answer.php';
 require_once 'AnswerOption.php';
 
 
-
-
 class OptionsQuestion extends Question{
     public $options=array();
 
