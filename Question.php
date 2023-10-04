@@ -25,5 +25,8 @@ abstract class Question{
     public function showIfAnswerIsCorrect(Answer $answer):string{
         if($this->isAnswerCorrect($answer)) return "correct";
         else return "wrong"; 
+
+        // different syntax, same effect
+        // return $this->isAnswerCorrect($answer) ? "correct" : "wrong"; 
     }
 }
