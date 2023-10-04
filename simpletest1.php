@@ -5,14 +5,16 @@ require_once 'TextQuestion.php';
 
 // let's have a look on a multiple choice question
 $q1=new OptionsQuestion("Welche dieser Begriffe sind \"access modifiers\" in PHP?",
-                "public|true||protected|true||private|true||abstract|false", true); 
+                        "public|true||protected|true||private|true||abstract|false", true); 
 
-$q3=new OptionsQuestion("Which keyword is used to create an object in PHP?","abstract|false||new|true||class|false");
+// a single choice question does not need the third, optional parameter. 
+$q3=new OptionsQuestion("Which keyword is used to create an object in PHP?",
+                        "abstract|false||new|true||class|false");
 //echo "<pre>";
 //var_dump($q1);
 //echo "</pre>";
 
-$q3->simpleDisplay(); 
+$q1->simpleDisplay(); 
 echo "<hr/>";
 // let's test some examples
 $tests=["true|true|true|false", "false|false|false|false"];
